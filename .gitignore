@@ -44,3 +44,4 @@ secrets.*sh
 docs/
 
 .env
+.tool-versions
