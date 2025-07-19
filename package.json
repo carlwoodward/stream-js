@@ -33,7 +33,8 @@
     "prepare": "yarn run build",
     "preversion": "yarn run test-unit-node",
     "version": "yarn run dist && yarn run build && git add dist",
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push && git push --tags && npm publish",
+    "postinstall": "yarn run build"
   },
   "husky": {
     "hooks": {
