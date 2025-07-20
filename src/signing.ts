@@ -1,4 +1,4 @@
-import jwt, { SignOptions } from 'jsonwebtoken';
+import { SignOptions, sign } from 'jsonwebtoken';
 
 // for a claim in jwt
 function joinClaimValue(items: string | string[]): string {
@@ -40,7 +40,7 @@ export function JWTScopeToken(
   if (options.feedId) payload.feed_id = joinClaimValue(options.feedId);
   if (options.userId) payload.user_id = options.userId;
 
-  return jwt.sign(payload, apiSecret, { algorithm: 'HS256', noTimestamp });
+  return sign(payload, apiSecret, { algorithm: 'HS256', noTimestamp });
 }
 
 /**
@@ -67,5 +67,5 @@ export function JWTUserSessionToken(
   const payload = { user_id: userId, ...extraData };
 
   const opts: SignOptions = { algorithm: 'HS256', noTimestamp: true, ...jwtOptions };
-  return jwt.sign(payload, apiSecret, opts);
+  return sign(payload, apiSecret, opts);
 }
